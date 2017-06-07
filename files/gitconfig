@@ -1,0 +1,18 @@
+[alias]
+	ls = log --decorate=short --abbrev-commit --graph --pretty=oneline --branches
+  l = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(bold green)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=relative
+	#l = log --decorate=short --graph --pretty=format:"%h (%an) %s" --branches
+  c = commit
+  ca = commit -am
+	s = status #-sb
+	fr = !git fetch origin --prune && git rebase
+  ss = stash save
+  sp = stash pop
+	co = checkout
+	amend = commit -a --amend --no-edit
+	fuckyou = reset --hard HEAD
+[user]
+	name = REPLACE_USER_FULLNAME
+	email = REPLACE_USER_EMAIL 
+[credential]
+	helper = cache --timeout=28800 # 8 hours

@@ -6,6 +6,7 @@ RUN useradd dev
 #    echo "Defaults env_keep = \"http_proxy https_proxy HTTP_PROXY HTTPS_PROXY ftp_proxy FTP_PROXY NO_PROXY no_proxy\"" >> /etc/sudoers
 
 # Timezone and locale setup
+RUN apt-get install tzdata locales
 RUN cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen && \
