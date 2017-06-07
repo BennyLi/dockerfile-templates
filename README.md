@@ -1,6 +1,6 @@
 # Dockerfile Templates - WTF?
 
-The main feature I'm missing in Dockerfiles are mixins. I love to reuse code and Dockerfiles just don't allow this. And it doesn't seem to be included in the new future (see [this issue / proposal](moby/moby/issues/735)).
+The main feature I'm missing in Dockerfiles are mixins. I love to reuse code and Dockerfiles just don't allow this. And it doesn't seem to be included in the new future (see [this issue / proposal](https://github.com/moby/moby/issues/735)).
 
 This repo aims to be a workaround with some simple basic tools that should be available on all UNIX plattforms. It utilizes [GNU make](https://www.gnu.org/software/make/) and the [GNU m4 macro processor](https://www.gnu.org/software/m4/m4.html) to generate a Dockerfile from various templates. This repo includes an increasing number of templates that can be used out of the box. And you are very welcome to **contribute**!
 
