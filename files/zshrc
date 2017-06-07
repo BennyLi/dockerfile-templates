@@ -1,0 +1,51 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+bindkey -v
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '${HOME}/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+autoload -Uz colors && colors
+# Show all 256 colors with color number
+function spectrum_ls() {
+    for code in {000..255}; do
+        print -P -- "$code: %F{$code}COLOR%f %K{$code}                    %k"
+    done
+}
+
+autoload -Uz promptinit
+promptinit
+
+alias ll='ls -l'
+alias la='ls -la'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias .......='cd ../../../../../..'
+
+#export PS1="[%D %T] %d$ "
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' stagedstr '%F{28}!%f'
+zstyle ':vcs_info:*' unstagedstr '%F{11}?%f'
+zstyle ':vcs_info:git*' check-for-changes true
+zstyle ':vcs_info:git*' formats "[%b %m%u%c] "
+setopt prompt_subst
+precmd(){
+    local preprompt_left="%F{255}%n@%m %3~%f"
+    local preprompt_right="%F{255}%D{%H:%M:%S}%f"
+    local preprompt_left_length=${#${(S%%)preprompt_left//(\%([KF1]|)\{*\}|\%[Bbkf])}}
+    local preprompt_right_length=${#${(S%%)preprompt_right//(\%([KF1]|)\{*\}|\%[Bbkf])}}
+    local num_filler_spaces=$((COLUMNS - preprompt_left_length - preprompt_right_length))
+    print -Pr $'\n'"%K{33}$preprompt_left${(l:$num_filler_spaces:)}$preprompt_right%k"
+    vcs_info
+}
+PROMPT='${vcs_info_msg_0_}# '
+
+export EDITOR="vim"
